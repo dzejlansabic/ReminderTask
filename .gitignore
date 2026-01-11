@@ -1,0 +1,64 @@
+﻿# Build outputs
+bin/
+obj/
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+
+[Dd]ebug/x64/
+[Dd]ebugPublic/x64/
+[Rr]elease/x64/
+[Rr]eleases/x64/
+bin/x64/
+obj/x64/
+
+[Dd]ebug/x86/
+[Dd]ebugPublic/x86/
+[Rr]elease/x86/
+[Rr]eleases/x86/
+bin/x86/
+obj/x86/
+
+appsettings.Development.json
+appsettings.Production.json
+
+# Visual Studio cache and settings
+.vs/
+*.user
+*.suo
+
+# Rider IDE
+.idea/
+
+# Logs
+*.log
+
+# NuGet packages
+*.nupkg
+packages/
+
+# SQLite database
+reminders.db
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# GitHub Copilot
+.copilot/
+.copilot.hidden/
+.copilot.global/
+
+# DotNet temporary files
+*.dotCover
+*.vsix
+*.cache
+
+# User-specific files
+*.swp
+*.tmp
+*.bak
+*.backup

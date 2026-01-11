@@ -1,0 +1,7 @@
+@ReminderTask_HostAddress = http://localhost:5276
+
+GET {{ReminderTask_HostAddress}}/reminders/
+Accept: application/json
+
+###
+
