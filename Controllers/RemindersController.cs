@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ReminderTask.Data;
+using ReminderTask.DTOs;
+using ReminderTask.Models;
 
 namespace ReminderTask.Controllers
 {
@@ -6,24 +10,69 @@ namespace ReminderTask.Controllers
     [ApiController]
     public class RemindersController : ControllerBase
     {
-        // GET: api/<RemindersController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly AppDbContext _db;
+
+        public RemindersController(AppDbContext db)
         {
-            return new string[] { "value1", "value2" };
+            _db = db;
         }
 
-        // GET api/<RemindersController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        // GET: api/<RemindersController>
+        [HttpGet]
+        public async Task<IEnumerable<ReminderResponse>> Get()
         {
-            return "value";
+            return await _db.Reminders
+                        .OrderBy(r => r.SendAt)
+                        .Select(r => new ReminderResponse
+                        {
+                            Id = r.Id,
+                            Message = r.Message,
+                            SendAt = r.SendAt,
+                            Status = r.Status.ToString()
+                        })
+                        .ToListAsync();
+        }
+
+        // GET api/<RemindersController>/e6495f66-b693-4a14-8b5d-287caeff60e7
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            if (id == Guid.Empty)
+                return BadRequest("Invalid reminder ID.");
+
+            var reminder = await _db.Reminders.FindAsync(id);
+
+            if (reminder == null)
+                return NotFound();
+
+            return Ok(reminder);
         }
 
         // POST api/<RemindersController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] ReminderCreateRequest request)
         {
+            if (request.SendAt <= DateTime.UtcNow)
+            {
+                return BadRequest("SendAt must be in the future.");
+            }
+
+            var reminder = new Reminder
+            {
+                Message = request.Message,
+                SendAt = request.SendAt,
+                Email = request.Email
+            };
+
+            _db.Reminders.Add(reminder);
+            await _db.SaveChangesAsync();
+
+            return Ok(new
+            {
+                id = reminder.Id,
+                status = reminder.Status.ToString(),
+                sendAt = reminder.SendAt
+            });
         }
 
         // PUT api/<RemindersController>/5

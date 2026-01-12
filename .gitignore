@@ -24,6 +24,7 @@ obj/x86/
 
 appsettings.Development.json
 appsettings.Production.json
+appsettings.json
 
 # Visual Studio cache and settings
 .vs/
