@@ -1,7 +1,20 @@
-@ReminderTask_HostAddress = http://localhost:5276
+@ReminderTask_HostAddress = https://localhost:7058
 
-GET {{ReminderTask_HostAddress}}/reminders/
+GET {{ReminderTask_HostAddress}}/api/reminders/
 Accept: application/json
 
 ###
 
+GET {{ReminderTask_HostAddress}}/api/reminders/e6495f66-b693-4a14-8b5d-287caeff60e7
+Accept: application/json
+
+###
+
+POST {{ReminderTask_HostAddress}}/api/reminders
+Content-Type: application/json
+
+{
+  "message": "Interview!",
+  "sendAt": "2026-01-13T12:00:00",
+  "email": "dzejlan.sabic96@gmail.com"
+}
