@@ -14,7 +14,26 @@ POST {{ReminderTask_HostAddress}}/api/reminders
 Content-Type: application/json
 
 {
-  "message": "Interview!",
-  "sendAt": "2026-01-13T12:00:00",
+  "message": "Test 3",
+  "sendAt": "2026-01-14T09:00:00",
   "email": "dzejlan.sabic96@gmail.com"
 }
+
+###
+
+DELETE {{ReminderTask_HostAddress}}/api/reminders/9356d8d7-5efe-4d74-ad66-f8140e850baa
+Accept: application/json
+
+###
+
+PUT {{ReminderTask_HostAddress}}/api/reminders/9356d8d7-5efe-4d74-ad66-f8140e850baa
+Content-Type: application/json
+
+{
+  "id": "9356d8d7-5efe-4d74-ad66-f8140e850baa",
+  "message": "Updated reminder message",
+  "sendAt": "2026-01-15T10:30:00",
+  "email": "dzejlan.sabic96@gmail.com"
+}
+
+###

@@ -45,7 +45,13 @@ namespace ReminderTask.Controllers
             if (reminder == null)
                 return NotFound();
 
-            return Ok(reminder);
+            return Ok(new ReminderResponse
+            {
+                Id = reminder.Id,
+                Message = reminder.Message,
+                SendAt = reminder.SendAt,
+                Status = reminder.Status.ToString()
+            });
         }
 
         // POST api/<RemindersController>
@@ -77,14 +83,50 @@ namespace ReminderTask.Controllers
 
         // PUT api/<RemindersController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(Guid id, [FromBody] ReminderUpdateRequest request)
         {
+            if (id == Guid.Empty)
+                return BadRequest("Invalid reminder ID.");
+
+            if (request.SendAt <= DateTime.UtcNow)
+                return BadRequest("SendAt must be in the future.");
+
+            var reminder = await _db.Reminders.FindAsync(id);
+
+            if (reminder == null)
+                return NotFound();
+
+            reminder.Message = request.Message.Trim();
+            reminder.SendAt = request.SendAt;
+            reminder.Email = request.Email;
+
+            await _db.SaveChangesAsync();
+
+            return Ok(new ReminderResponse
+            {
+                Id = reminder.Id,
+                Message = reminder.Message,
+                SendAt = reminder.SendAt,
+                Status = reminder.Status.ToString()
+            });
         }
 
         // DELETE api/<RemindersController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
+            if (id == Guid.Empty)
+                return BadRequest("Invalid reminder ID.");
+
+            var reminder = await _db.Reminders.FindAsync(id);
+
+            if (reminder == null)
+                return NotFound();
+
+            _db.Reminders.Remove(reminder);
+            await _db.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
