@@ -14,9 +14,9 @@ POST {{ReminderTask_HostAddress}}/api/reminders
 Content-Type: application/json
 
 {
-  "message": "Test 3",
-  "sendAt": "2026-01-14T09:00:00",
-  "email": "dzejlan.sabic96@gmail.com"
+  "message": "Test 11",
+  "sendAt": "2026-01-12T20:59:00",
+  "email": "topicnejraa@gmail.com"
 }
 
 ###
