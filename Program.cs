@@ -1,5 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using ReminderTask.BackgroundServices;
+using ReminderTask.Configuration;
 using ReminderTask.Data;
+using ReminderTask.Notifications;
+using ReminderTask.Notifications.Senders;
+using ReminderTask.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +13,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<EmailSettings>(
+    builder.Configuration.GetSection("EmailSettings"));
+
+builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
+builder.Services.AddSingleton<INotificationSender, EmailNotificationSender>();
+
+builder.Services.AddHostedService<ReminderWorker>();
+
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
