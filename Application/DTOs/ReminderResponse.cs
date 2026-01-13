@@ -1,4 +1,4 @@
-﻿namespace ReminderTask.DTOs
+﻿namespace ReminderTask.Application.DTOs
 {
     public class ReminderResponse
     {

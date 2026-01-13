@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ReminderTask.Data;
-using ReminderTask.DTOs;
+using ReminderTask.Application.DTOs;
+using ReminderTask.Infrastructure.Data;
 using ReminderTask.Models;
 
 namespace ReminderTask.Controllers
