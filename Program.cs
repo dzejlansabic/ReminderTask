@@ -6,6 +6,7 @@ using ReminderTask.Configuration;
 using ReminderTask.Infrastructure.BackgroundServices;
 using ReminderTask.Infrastructure.Data;
 using ReminderTask.Infrastructure.Email;
+using ReminderTask.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
 
 var app = builder.Build();
+
+app.UseMiddleware<RequestLoggingMiddleware>();
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
