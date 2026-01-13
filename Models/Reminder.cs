@@ -11,6 +11,6 @@ namespace ReminderTask.Models
         public DateTime SendAt { get; set; }
         public string? Email { get; set; }
         public ReminderStatus Status { get; set; } = ReminderStatus.Scheduled;
-        public DateTime? SentAt { get; set; } = DateTime.UtcNow;
+        public DateTime? SentAt { get; set; } = null;
     }
 }

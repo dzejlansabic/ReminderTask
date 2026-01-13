@@ -21,11 +21,12 @@ namespace ReminderTask.Services
             if (string.IsNullOrWhiteSpace(to))
             {
                 _logger.LogWarning("No email address provided, skipping email sending.");
-                return;
+                throw new ArgumentException("Email address must be provided.", nameof(to));
             }
+
             try
             {
-                var message = new MailMessage();
+                using var message = new MailMessage();
                 message.From = new MailAddress(_settings.FromEmail, _settings.FromName);
                 message.To.Add(to);
                 message.Subject = subject;
@@ -47,6 +48,7 @@ namespace ReminderTask.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to send email to {To}", to);
+                throw;
             }
         }
     }

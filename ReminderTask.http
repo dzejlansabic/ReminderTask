@@ -5,7 +5,7 @@ Accept: application/json
 
 ###
 
-GET {{ReminderTask_HostAddress}}/api/reminders/e6495f66-b693-4a14-8b5d-287caeff60e7
+GET {{ReminderTask_HostAddress}}/api/reminders/f84aafb1-686c-4546-8aa2-5d36e52a001c
 Accept: application/json
 
 ###
@@ -14,25 +14,25 @@ POST {{ReminderTask_HostAddress}}/api/reminders
 Content-Type: application/json
 
 {
-  "message": "Test 11",
-  "sendAt": "2026-01-12T20:59:00",
-  "email": "topicnejraa@gmail.com"
+  "message": "Test utc",
+  "sendAt": "2026-01-13T12:42:00",
+  "email": "dzejlan.sabic96@gmail.com"
 }
 
 ###
 
-DELETE {{ReminderTask_HostAddress}}/api/reminders/9356d8d7-5efe-4d74-ad66-f8140e850baa
+DELETE {{ReminderTask_HostAddress}}/api/reminders/bed9cdd5-145c-48c6-96c1-fea7ca320c0e
 Accept: application/json
 
 ###
 
-PUT {{ReminderTask_HostAddress}}/api/reminders/9356d8d7-5efe-4d74-ad66-f8140e850baa
+PUT {{ReminderTask_HostAddress}}/api/reminders/f84aafb1-686c-4546-8aa2-5d36e52a001c
 Content-Type: application/json
 
 {
-  "id": "9356d8d7-5efe-4d74-ad66-f8140e850baa",
-  "message": "Updated reminder message",
-  "sendAt": "2026-01-15T10:30:00",
+  "id": "f84aafb1-686c-4546-8aa2-5d36e52a001c",
+  "message": "Updated with utc",
+  "sendAt": "2026-01-13T13:01:00",
   "email": "dzejlan.sabic96@gmail.com"
 }
 
