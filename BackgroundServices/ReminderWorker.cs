@@ -39,13 +39,27 @@ namespace ReminderTask.BackgroundServices
 
             foreach (var reminder in reminders)
             {
-                foreach (var sender in _senders.Where(s => s.CanSend(reminder)))
+                try
                 {
-                    await sender.SendAsync(reminder);
-                }
+                    var CorrectSenders = _senders.Where(s => s.CanSend(reminder)).ToList();
 
-                reminder.Status = ReminderStatus.Sent;
-                reminder.SentAt = DateTime.UtcNow;
+                    if (!CorrectSenders.Any())
+                    {
+                        reminder.Status = ReminderStatus.Failed;
+                        continue;
+                    }
+                    foreach (var sender in CorrectSenders)
+                    {
+                        await sender.SendAsync(reminder);
+                    }
+
+                    reminder.Status = ReminderStatus.Sent;
+                    reminder.SentAt = DateTime.UtcNow;
+                }
+                catch
+                {
+                    reminder.Status = ReminderStatus.Failed;
+                }
             }
 
             if (reminders.Any())

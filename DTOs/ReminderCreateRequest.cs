@@ -10,9 +10,9 @@ namespace ReminderTask.DTOs
         public string Message { get; set; } = null!;
 
         [Required]
-        public DateTime SendAt { get; set; }
+        public DateTimeOffset SendAt { get; set; }
 
         [EmailAddress]
-        public string? Email { get; set; }
+        public string? Email { get; set; } = null;
     }
 }

@@ -19,6 +19,7 @@ builder.Services.Configure<EmailSettings>(
 
 builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
 builder.Services.AddSingleton<INotificationSender, EmailNotificationSender>();
+builder.Services.AddSingleton<INotificationSender, ConsoleNotificationSender>();
 
 builder.Services.AddHostedService<ReminderWorker>();
 

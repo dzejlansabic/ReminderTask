@@ -15,9 +15,9 @@ namespace ReminderTask.Notifications.Senders
         public bool CanSend(Reminder reminder)
         => !string.IsNullOrWhiteSpace(reminder.Email);
 
-        public async Task SendAsync(Reminder reminder)
+        public async Task SendAsync(Reminder reminder, CancellationToken cancellationToken = default)
         {
-            await _emailSender.SendEmailAsync(
+                await _emailSender.SendEmailAsync(
                 reminder.Email!,
                 "Reminder",
                 reminder.Message
