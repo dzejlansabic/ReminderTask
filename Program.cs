@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using ReminderTask.Application.Notifications;
 using ReminderTask.Application.Notifications.Senders;
+using ReminderTask.Application.Services;
 using ReminderTask.Configuration;
 using ReminderTask.Infrastructure.BackgroundServices;
 using ReminderTask.Infrastructure.Data;
@@ -17,9 +18,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));
 
+
 builder.Services.AddSingleton<IEmailSender, SmtpEmailSender>();
 builder.Services.AddSingleton<INotificationSender, EmailNotificationSender>();
 builder.Services.AddSingleton<INotificationSender, ConsoleNotificationSender>();
+builder.Services.AddScoped<IReminderService, ReminderService>();
 
 builder.Services.AddHostedService<ReminderWorker>();
 
