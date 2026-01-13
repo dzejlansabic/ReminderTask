@@ -65,8 +65,8 @@ namespace ReminderTask.Controllers
 
             var reminder = new Reminder
             {
-                Message = request.Message,
-                SendAt = request.SendAt,
+                Message = request.Message.Trim(),
+                SendAt = request.SendAt.UtcDateTime,
                 Email = request.Email
             };
 
@@ -75,9 +75,9 @@ namespace ReminderTask.Controllers
 
             return Ok(new
             {
-                id = reminder.Id,
-                status = reminder.Status.ToString(),
-                sendAt = reminder.SendAt
+                Id = reminder.Id,
+                Status = reminder.Status.ToString(),
+                SendAt = reminder.SendAt
             });
         }
 
@@ -97,7 +97,7 @@ namespace ReminderTask.Controllers
                 return NotFound();
 
             reminder.Message = request.Message.Trim();
-            reminder.SendAt = request.SendAt;
+            reminder.SendAt = request.SendAt.UtcDateTime;
             reminder.Email = request.Email;
 
             await _db.SaveChangesAsync();

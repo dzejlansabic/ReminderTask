@@ -5,14 +5,14 @@ namespace ReminderTask.DTOs
     public class ReminderUpdateRequest
     {
         [Required]
-        [MinLength(3)]
+        [MinLength(1)]
         [MaxLength(500)]
         public string Message { get; set; } = null!;
 
         [Required]
-        public DateTime SendAt { get; set; }
+        public DateTimeOffset SendAt { get; set; }
 
         [EmailAddress]
-        public string? Email { get; set; }
+        public string? Email { get; set; } = null;
     }
 }
