@@ -14,14 +14,25 @@ POST {{ReminderTask_HostAddress}}/api/reminders
 Content-Type: application/json
 
 {
-  "message": "Test utc",
-  "sendAt": "2026-01-13T12:42:00",
+  "message": "Test with mail",
+  "sendAt": "2026-01-13T14:10:00",
   "email": "dzejlan.sabic96@gmail.com"
 }
 
 ###
 
-DELETE {{ReminderTask_HostAddress}}/api/reminders/bed9cdd5-145c-48c6-96c1-fea7ca320c0e
+POST {{ReminderTask_HostAddress}}/api/reminders
+Content-Type: application/json
+
+{
+  "message": "Test without email",
+  "sendAt": "2026-01-13T14:12:00",
+  "email": null
+}
+
+###
+
+DELETE {{ReminderTask_HostAddress}}/api/reminders/33ac3506-d4df-4e0d-bdde-ca0d6a7535f8
 Accept: application/json
 
 ###

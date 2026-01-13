@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ReminderTask.Data;
+using ReminderTask.Application.Notifications;
+using ReminderTask.Infrastructure.Data;
 using ReminderTask.Models;
-using ReminderTask.Notifications;
 
-namespace ReminderTask.BackgroundServices
+namespace ReminderTask.Infrastructure.BackgroundServices
 {
     public class ReminderWorker : BackgroundService
     {

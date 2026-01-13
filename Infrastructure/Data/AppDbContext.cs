@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ReminderTask.Models;
 
-namespace ReminderTask.Data
+namespace ReminderTask.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {
