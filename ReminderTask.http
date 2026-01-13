@@ -14,8 +14,8 @@ POST {{ReminderTask_HostAddress}}/api/reminders
 Content-Type: application/json
 
 {
-  "message": "Test with mail",
-  "sendAt": "2026-01-13T14:10:00",
+  "message": "Test service layer",
+  "sendAt": "2026-01-13T15:14:00",
   "email": "dzejlan.sabic96@gmail.com"
 }
 
@@ -32,18 +32,18 @@ Content-Type: application/json
 
 ###
 
-DELETE {{ReminderTask_HostAddress}}/api/reminders/33ac3506-d4df-4e0d-bdde-ca0d6a7535f8
+DELETE {{ReminderTask_HostAddress}}/api/reminders/f9093fec-1531-4b4f-827b-2437a10206ef
 Accept: application/json
 
 ###
 
-PUT {{ReminderTask_HostAddress}}/api/reminders/f84aafb1-686c-4546-8aa2-5d36e52a001c
+PUT {{ReminderTask_HostAddress}}/api/reminders/49a7a3d7-01db-4221-9aa7-1c7d2cb84a97
 Content-Type: application/json
 
 {
-  "id": "f84aafb1-686c-4546-8aa2-5d36e52a001c",
-  "message": "Updated with utc",
-  "sendAt": "2026-01-13T13:01:00",
+  "id": "49a7a3d7-01db-4221-9aa7-1c7d2cb84a97",
+  "message": "Updated with utc upd",
+  "sendAt": "2026-01-18T13:01:00",
   "email": "dzejlan.sabic96@gmail.com"
 }
 
