@@ -1,7 +1,7 @@
-﻿using ReminderTask.Models;
-using ReminderTask.Services;
+﻿using ReminderTask.Application.Notifications;
+using ReminderTask.Models;
 
-namespace ReminderTask.Notifications.Senders
+namespace ReminderTask.Application.Notifications.Senders
 {
     public class EmailNotificationSender : INotificationSender
     {

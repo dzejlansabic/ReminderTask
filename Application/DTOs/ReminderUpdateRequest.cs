@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ReminderTask.DTOs
+namespace ReminderTask.Application.DTOs
 {
-    public class ReminderCreateRequest
+    public class ReminderUpdateRequest
     {
         [Required]
         [MinLength(1)]

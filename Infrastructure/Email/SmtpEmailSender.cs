@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
+using ReminderTask.Application.Notifications;
 using ReminderTask.Configuration;
 using System.Net;
 using System.Net.Mail;
 
-namespace ReminderTask.Services
+namespace ReminderTask.Infrastructure.Email
 {
     public class SmtpEmailSender : IEmailSender
     {

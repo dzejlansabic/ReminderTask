@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using ReminderTask.BackgroundServices;
+using ReminderTask.Application.Notifications;
+using ReminderTask.Application.Notifications.Senders;
 using ReminderTask.Configuration;
-using ReminderTask.Data;
-using ReminderTask.Notifications;
-using ReminderTask.Notifications.Senders;
-using ReminderTask.Services;
+using ReminderTask.Infrastructure.BackgroundServices;
+using ReminderTask.Infrastructure.Data;
+using ReminderTask.Infrastructure.Email;
 
 var builder = WebApplication.CreateBuilder(args);
 

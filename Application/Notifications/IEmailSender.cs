@@ -1,4 +1,4 @@
-﻿namespace ReminderTask.Services
+﻿namespace ReminderTask.Application.Notifications
 {
     public interface IEmailSender
     {

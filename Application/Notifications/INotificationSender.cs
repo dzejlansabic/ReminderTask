@@ -1,6 +1,6 @@
 ﻿using ReminderTask.Models;
 
-namespace ReminderTask.Notifications
+namespace ReminderTask.Application.Notifications
 {
     public interface INotificationSender
     {
